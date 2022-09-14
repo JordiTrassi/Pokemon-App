@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import { PokemonApp } from '../PokemonApp';
 import { DetailsPokemonPage, ErrorPage, PokemonsList } from '../pages';
@@ -7,7 +7,7 @@ import { DetailsPokemonPage, ErrorPage, PokemonsList } from '../pages';
 
 export const AppRouter = createBrowserRouter([
     {
-        path: "/*",
+        path: "/",
         element: <PokemonApp />,
         errorElement: <ErrorPage />,
     },
@@ -20,6 +20,10 @@ export const AppRouter = createBrowserRouter([
                 element: <DetailsPokemonPage />,
             },
         ]
+    },
+    {
+        path: "/*",
+        element: <Navigate to="/" />,
     },
 ]);
 
