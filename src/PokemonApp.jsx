@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Button, Typography, Tooltip } from '@mui/material';
 
 
 export const PokemonApp = () => {
@@ -7,6 +7,9 @@ export const PokemonApp = () => {
     
     <Grid
       container
+      display="flex"
+      flexDirection="row"
+      justifyContent="right"
       sx={{
           width: '100vw',
           height: '100vh',
@@ -14,9 +17,40 @@ export const PokemonApp = () => {
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          xs: ml=20, 
         }}
+    >
+      <Grid
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          spacing={5}
+          width="50%"
       >
+        <Typography
+          variant='h1'
+          padding={5}
+          sx={{
+            color: 'white',
+          }}
+        >
+          The Pokemon App!
+        </Typography>
+        <Tooltip
+          title="Press START to download the Pokemons"
+          arrow
+          placement="bottom"
+        >
+          <Button
+            variant='outlined'
+            sx={{
+              fontSize: 30,
+            }}
+          >
+            START
+          </Button>
+        </Tooltip>
+      </Grid>
 
     </Grid>
 
