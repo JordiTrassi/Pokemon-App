@@ -24,7 +24,7 @@ In order to execute the app you must install the dependencies:
 In the project directory, you can run the app in the development mode:
 
 ### `yarn dev`
-Copy the URL (http://localhost:XXXX) that has been created in your browser.
+Copy the URL (`http://localhost:XXXX`) that has been created in your browser.
 
 To run the tests done with Jest:
 
