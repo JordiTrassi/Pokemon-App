@@ -1,2 +1,3 @@
+export * from './DetailsPokemonPage';
 export * from './ErrorPage';
-export * from './PokemonsList';
+export * from './PokemonsListPage';
