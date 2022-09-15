@@ -4,7 +4,7 @@ import { red } from '@mui/material/colors';
 export const pokemonAppTheme = createTheme({
     palette: {
         primary: {
-            main: '#262254'
+            main: '#d50000'
         },
         secondary: {
             main: '#543884'

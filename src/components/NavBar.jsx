@@ -97,7 +97,10 @@ export const NavBar = () => {
   return (
 
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{backgroundColor: 'primary'}}
+      >
         <Toolbar>          
           <Typography
                 variant="h5"
@@ -114,8 +117,18 @@ export const NavBar = () => {
                 color="inherit"
                 underline="none" 
                 href="/"
-                >
-                  {/* <MusicNote sx={{fontSize: 35}} /> MUSIC APP */}
+              >
+                <img
+                  src={`https://seeklogo.com/images/P/pokeball-logo-DC23868CA1-seeklogo.com.png`}
+                  alt="homeBtn"
+                  style={{
+                    height: 50,
+                    width: 'auto',
+                    padding: 2,
+                    marginTop: 5
+                  }}
+                />
+                  
               </Link>
             </Tooltip>
           </Typography>
