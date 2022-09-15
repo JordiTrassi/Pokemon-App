@@ -20,12 +20,11 @@ export const PokemonApp = () => {
         }}
     >
       <Grid
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          spacing={5}
-          width="50%"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        width="50%"
       >
         <Typography
           variant='h1'
@@ -45,6 +44,10 @@ export const PokemonApp = () => {
             variant='outlined'
             sx={{
               fontSize: 30,
+              color: 'black',
+              borderColor: 'black',
+              borderRadius: 5,
+              border: 2,
             }}
           >
             START
