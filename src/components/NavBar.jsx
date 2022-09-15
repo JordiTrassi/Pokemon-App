@@ -1,5 +1,5 @@
-// import { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { AppBar, Box, Toolbar, Typography, InputBase, Link, Tooltip, FormControl } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
@@ -56,13 +56,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const NavBar = () => {
 
-  // const dispatch = useDispatch();
-  // const [inputValue, setInputValue] = useState('');
-  // const { errorMessage } = useSelector(state => state.playList);
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState('');
+  const { errorMessage } = useSelector(state => state.pokemonStore);
 
-  // const onInputChange = ({target}) => {
-  //   setInputValue(target.value);
-  // }
+  const onInputChange = ({target}) => {
+    setInputValue(target.value);
+  }
 
   // const onSubmit = async () => {
   //   const verifiedInputValue = await verifyInputValue(inputValue);
@@ -71,18 +71,18 @@ export const NavBar = () => {
   //   dispatch(getAlbums({ verifiedInputValue }));
   // }
 
-  // useEffect(() => {
-  //   const listener = event => {
-  //     if (event.code === "Enter" || event.code === "NumpadEnter") {
-  //       event.preventDefault();
-  //       onSubmit();
-  //     }
-  //   };
-  //   document.addEventListener("keydown", listener);
-  //   return () => {
-  //     document.removeEventListener("keydown", listener);
-  //   };
-  // }, [inputValue]);
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        onSubmit();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [inputValue]);
 
   // useEffect(() => {
   //     if (errorMessage.length > 0) {
