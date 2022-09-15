@@ -1,15 +1,17 @@
+import { pokemonApi } from '../api/pokemonApi';
 import { setPokemons, noApiResults } from './slices/pokemonSlice';
 
-export const getPokemons = ({ page = 0, verifiedInputValue }) => {
+export const getAllPokemons = (page = 0) => {
     
-    return async(dispatch) => {
+    return async (dispatch) => {
         
-        // const resp = await fetch(`https://`);
-        // const data = await resp.json();
+        const {data} = await pokemonApi.get(`/pokemon?limit=20&offset=${page * 20}`);
+
+        console.log(data);
   
-        // (data.resultCount === 0)
-        //     ? dispatch(noApiResults())
-        //     : dispatch(setPokemons({ albums: data.results, page: page + 1}));
+        (data.count === 0)
+            ? dispatch(noApiResults())
+            : dispatch(setPokemons({ pokemons: data.results, page: page + 1}));
            
     }
 }

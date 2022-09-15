@@ -13,9 +13,9 @@ export const pokemonSlice = createSlice({
         errorMessage: '',
     },
     reducers: {
-        startLoadingPokemons: (state, action) => {
+        startLoadingAllPokemons: (state, action) => {
             state.isLoading = true;
-            state.verifiedInputValue = action.payload.verifiedInputValue;
+            // state.verifiedInputValue = action.payload.verifiedInputValue;
             state.errorMessage = '';
         },
         setPokemons: (state, action) => {
@@ -35,4 +35,4 @@ export const pokemonSlice = createSlice({
 })
 
 
-export const { startLoadingPokemons, setPokemons, changingViewGrid, noApiResults} = pokemonSlice.actions;
+export const { startLoadingAllPokemons, setPokemons, changingViewGrid, noApiResults} = pokemonSlice.actions;

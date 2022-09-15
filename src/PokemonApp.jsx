@@ -1,7 +1,16 @@
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Grid, Button, Typography, Tooltip } from '@mui/material';
-
+import { getAllPokemons, startLoadingAllPokemons } from './store';
 
 export const PokemonApp = () => {
+
+  const dispatch = useDispatch();
+
+  const getStartAllPokemons = () => {
+    dispatch(startLoadingAllPokemons());
+    dispatch(getAllPokemons());
+  };
   
   return (
     
@@ -40,18 +49,24 @@ export const PokemonApp = () => {
           arrow
           placement="bottom"
         >
-          <Button
-            variant='outlined'
-            sx={{
-              fontSize: 30,
-              color: 'black',
-              borderColor: 'black',
-              borderRadius: 5,
-              border: 2,
-            }}
-          >
-            START
-          </Button>
+          <Link
+            to="pokemons"
+            style={{textDecoration: 'none'}}           
+            >
+            <Button
+              onClick={getStartAllPokemons}
+              variant='outlined'
+              sx={{
+                fontSize: 30,
+                color: 'black',
+                borderColor: 'black',
+                borderRadius: 5,
+                border: 2,
+              }}
+            >
+              START
+            </Button>        
+          </Link>
         </Tooltip>
       </Grid>
 

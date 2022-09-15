@@ -65,10 +65,10 @@ export const NavBar = () => {
   }
 
   const onSubmit = async () => {
-    const verifiedInputValue = await verifyInputValue(inputValue);
+    // const verifiedInputValue = await verifyInputValue(inputValue);
 
-    dispatch(startLoadingPokemons({ verifiedInputValue }));
-    dispatch(getPokemons({ verifiedInputValue }));
+    // dispatch(startLoadingPokemons({ verifiedInputValue }));
+    // dispatch(getPokemons({ verifiedInputValue }));
   }
 
   useEffect(() => {
