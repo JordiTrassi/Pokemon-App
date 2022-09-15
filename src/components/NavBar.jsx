@@ -5,7 +5,7 @@ import { AppBar, Box, Toolbar, Typography, InputBase, Link, Tooltip, FormControl
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
-// import { verifyInputValue } from '../helpers/verifyInputValue';
+import { verifyInputValue } from '../helpers/verifyInputValue';
 // import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.css';
 
@@ -64,12 +64,12 @@ export const NavBar = () => {
     setInputValue(target.value);
   }
 
-  // const onSubmit = async () => {
-  //   const verifiedInputValue = await verifyInputValue(inputValue);
+  const onSubmit = async () => {
+    const verifiedInputValue = await verifyInputValue(inputValue);
 
-  //   dispatch(startLoadingAlbums({ verifiedInputValue }));
-  //   dispatch(getAlbums({ verifiedInputValue }));
-  // }
+    dispatch(startLoadingPokemons({ verifiedInputValue }));
+    dispatch(getPokemons({ verifiedInputValue }));
+  }
 
   useEffect(() => {
     const listener = event => {
