@@ -7,6 +7,7 @@ export const pokemonSlice = createSlice({
     initialState: {
         pokemons: [],
         page: 0,
+        renderPage: 0,
         viewGrid: true,
         isLoading: false,
         verifiedInputValue: '',
@@ -25,6 +26,7 @@ export const pokemonSlice = createSlice({
         setPokemons: (state, { payload }) => {
             state.isLoading = false;
             state.page = payload.newPage;
+            state.renderPage = payload.newPage;
             state.pokemons = [...state.pokemons, payload.results];
             state.errorMessage = '';
         },
@@ -40,6 +42,12 @@ export const pokemonSlice = createSlice({
         noApiResults: (state, action) => {
             state.errorMessage = 'No hay resultados disponibles!';
         },
+        previousPage: (state, { payload }) => {
+            state.renderPage = payload;
+        },
+        nextPage: (state) => {
+            state.renderPage = state.renderPage + 1;
+        },
 
     },
 })
@@ -52,4 +60,6 @@ export const {
     setPokemonByName,
     changingViewGrid,
     noApiResults,
+    previousPage,
+    nextPage,
 } = pokemonSlice.actions;
