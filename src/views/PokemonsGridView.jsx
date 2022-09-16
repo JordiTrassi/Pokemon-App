@@ -5,9 +5,8 @@ import { PokemonCard, IsLoading } from '../components';
 
 export const PokemonsGridView = () => {
 
-    const { isLoading, pokemons = [], renderPage } = useSelector(state => state.pokemonStore);
+    const { isLoading, totalPokemons = [], renderPage } = useSelector(state => state.pokemonStore);
 
-    // console.log(renderPage);
     return (
         <Grid
             container
@@ -17,11 +16,10 @@ export const PokemonsGridView = () => {
                 p: 1
             }}
         >
-            
             {
                 (isLoading)
-                    ? <Grid item sx={{ ml: '42%' }}><IsLoading /></Grid>
-                    : pokemons.map(pokemon => (
+                    ? <IsLoading />
+                    : totalPokemons[renderPage - 1].map(pokemon => (
                         <Grid
                             item
                             key={pokemon.name}

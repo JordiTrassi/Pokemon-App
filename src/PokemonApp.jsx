@@ -52,7 +52,7 @@ export const PokemonApp = () => {
           placement="bottom"
         >
           <Link
-            to="pokemons"
+            to={'pokemons'}
             style={{textDecoration: 'none'}}           
             >
             <Button

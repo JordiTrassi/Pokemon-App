@@ -5,6 +5,7 @@ export const pokemonSlice = createSlice({
 
     name: 'pokemonStore',
     initialState: {
+        totalPokemons: [],
         pokemons: [],
         pokemonId: 1,
         page: 0,
@@ -25,11 +26,11 @@ export const pokemonSlice = createSlice({
             state.pokemonSelected = payload.data;
         },
         setPokemons: (state, { payload }) => {
-            state.isLoading = false;
-            // state.page = payload.newPage;
-            // state.renderPage = payload.newPage;
+            state.pokemonId = payload.pokemonId;
             state.pokemons = [...state.pokemons, payload ];
             state.errorMessage = '';
+            state.renderPage = payload.newPage;
+            state.page = payload.newPage;
         },
         setPokemonByName: (state, action) => {
             state.isLoading = false;
@@ -49,6 +50,15 @@ export const pokemonSlice = createSlice({
         nextPage: (state) => {
             state.renderPage = state.renderPage + 1;
         },
+        addInTotalPokemons: (state) => {
+            state.totalPokemons = [...state.totalPokemons, state.pokemons];
+            state.pokemons = [];
+            state.isLoading = false;
+        },
+        setSelectedPokemon: (state, { payload }) => {
+            console.log(payload);
+            state.pokemonSelected = payload;
+        },
 
     },
 })
@@ -63,4 +73,6 @@ export const {
     noApiResults,
     previousPage,
     nextPage,
+    addInTotalPokemons,
+    setSelectedPokemon,
 } = pokemonSlice.actions;

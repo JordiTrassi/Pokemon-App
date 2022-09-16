@@ -12,14 +12,12 @@ export const DetailsPokemonPage = () => {
   const { pokemonSelected } = useSelector(state => state.pokemonStore);  
   const { name } = useParams(); 
   
-  
-  // const album = albums.find(album => album.collectionId === parseInt(collectionId));
 
   if (!pokemonSelected) {
     return <Navigate to="/home" />
   }
 
-  const { back_default  } = pokemonSelected.sprites;
+  const { back_default, front_default  } = pokemonSelected.sprites;
 
 
   return (
@@ -58,7 +56,7 @@ export const DetailsPokemonPage = () => {
                 maxWidth: { xs: 250, md: 350 },
               }}
             alt={name}
-            src={back_default}
+            src={front_default}
           />
         </Grid>
         <Grid item>

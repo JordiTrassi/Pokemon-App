@@ -1,13 +1,24 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
 import { AddCircle } from '@mui/icons-material';
+import { setSelectedPokemon } from '../store/slices/pokemonSlice';
 
 
 
 
-export const PokemonCard = ({name, sprites}) => {
+export const PokemonCard = (pokemon) => {
 
+  const { name, sprites } = pokemon;
   
+  const dispatch = useDispatch();
+
+  const onSelectedPokemon = () => {
+
+    dispatch(setSelectedPokemon(pokemon));
+  }
+    
+
   return (
 
     <Card
@@ -15,14 +26,14 @@ export const PokemonCard = ({name, sprites}) => {
       sx={{
         display: 'flex',
         mb: '20px',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         boxShadow: 6,
         borderRadius: 5,
       }}
       >
       <Box sx={{ display: 'flex', flexDirection: 'column' }} >
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h4">
+        <CardContent sx={{ flex: '1 0 auto', mr: -1 }}>
+          <Typography component="div" variant="h6">
             {
               name.toUpperCase()
             }
@@ -36,7 +47,9 @@ export const PokemonCard = ({name, sprites}) => {
               placement="right"
               arrow
             >
-              <IconButton>
+              <IconButton
+                onClick={onSelectedPokemon}
+              >
                 <AddCircle fontSize='large'/> 
               </IconButton>              
             </Tooltip>
@@ -48,7 +61,7 @@ export const PokemonCard = ({name, sprites}) => {
         component="img"
         image={sprites.front_default}
         alt={name}
-        sx={{ height: 200, width: 'auto' }}     
+        sx={{ height: 200, width: 'auto'}}     
       />
     </Card>
   )

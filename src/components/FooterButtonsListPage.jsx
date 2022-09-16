@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { Grid, Button, Tooltip, IconButton } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
@@ -9,13 +8,13 @@ import { getAllPokemons, startLoadingAllPokemons, previousPage, nextPage } from 
 export const FooterButtonsListPage = () => {
   
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
   
-    const { isLoading, renderPage, page } = useSelector(state => state.pokemonStore);
+    const { isLoading, renderPage, page, pokemonId } = useSelector(state => state.pokemonStore);
 
     const getMorePokemons = () => {
+        const nextPokemonId = pokemonId + 1;
         dispatch(startLoadingAllPokemons());
-        dispatch(getAllPokemons(page));
+        dispatch(getAllPokemons(nextPokemonId, page));
     }
 
     const goPreviousPage = () => {
