@@ -6,10 +6,11 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { verifyInputValue } from '../helpers/verifyInputValue';
+import { getPokemonByName, startLoadingPokemonByName } from '../store';
+
 // import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.css';
 
-// import { getAlbums, startLoadingAlbums } from '../store';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -40,7 +41,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -65,10 +65,10 @@ export const NavBar = () => {
   }
 
   const onSubmit = async () => {
-    // const verifiedInputValue = await verifyInputValue(inputValue);
+    const verifiedInputValue = await verifyInputValue(inputValue);
 
-    // dispatch(startLoadingPokemons({ verifiedInputValue }));
-    // dispatch(getPokemons({ verifiedInputValue }));
+    dispatch(startLoadingPokemonByName({ verifiedInputValue }));
+    dispatch(getPokemonByName({ verifiedInputValue }));
   }
 
   useEffect(() => {
@@ -133,19 +133,20 @@ export const NavBar = () => {
             </Tooltip>
           </Typography>
           <Search>
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
-            <FormControl>
-              {/* onSubmit={onSubmit} */}
-                  <StyledInputBase
-                    type="text"
-                    placeholder="Search Pokemon"
-                    value={inputValue}
-                    onChange={onInputChange}
-                  />
-                </FormControl>
-            </Search>
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
+            <FormControl
+              onSubmit={onSubmit}
+            >
+              <StyledInputBase
+                type="text"
+                placeholder="Search Pokemon"
+                value={inputValue}
+                onChange={onInputChange}
+              />
+            </FormControl>
+          </Search>
         </Toolbar>
       </AppBar>
     </Box>

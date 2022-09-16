@@ -11,17 +11,26 @@ export const pokemonSlice = createSlice({
         isLoading: false,
         verifiedInputValue: '',
         errorMessage: '',
+        pokemonSelected: {},
     },
     reducers: {
         startLoadingAllPokemons: (state, action) => {
             state.isLoading = true;
-            // state.verifiedInputValue = action.payload.verifiedInputValue;
-            state.errorMessage = '';
+        },
+        startLoadingPokemonByName: (state, action) => {
+            state.isLoading = true;
+            state.verifiedInputValue = action.payload.verifiedInputValue;
         },
         setPokemons: (state, action) => {
             state.isLoading = false;
             state.page = action.payload.page;
             state.pokemons = action.payload.pokemons;
+            state.errorMessage = '';
+        },
+        setPokemonByName: (state, action) => {
+            state.isLoading = false;
+            console.log(action.payload);
+            state.pokemonSelected = action.payload;
             state.errorMessage = '';
         },
         changingViewGrid: (state, action) => {
@@ -35,4 +44,11 @@ export const pokemonSlice = createSlice({
 })
 
 
-export const { startLoadingAllPokemons, setPokemons, changingViewGrid, noApiResults} = pokemonSlice.actions;
+export const {
+    startLoadingAllPokemons,
+    startLoadingPokemonByName,
+    setPokemons,
+    setPokemonByName,
+    changingViewGrid,
+    noApiResults,
+} = pokemonSlice.actions;

@@ -9,7 +9,7 @@ export const IsLoading = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        mt: 20,
+        mt: 15,
       }}>
       <Typography sx={{fontSize: 30}}>Is Loading ...</Typography>
       <CircularProgress sx={{mt: 3}} />

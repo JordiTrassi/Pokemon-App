@@ -16,7 +16,7 @@ export const AppRouter = createBrowserRouter([
         element: <PokemonsList />,
         children: [
             {
-                path: ":pokemonId",
+                path: ":pokemonName",
                 element: <DetailsPokemonPage />,
             },
         ]
