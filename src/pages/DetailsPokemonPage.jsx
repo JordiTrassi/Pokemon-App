@@ -10,7 +10,9 @@ export const DetailsPokemonPage = () => {
 
   const navigate = useNavigate();
   const { pokemonSelected } = useSelector(state => state.pokemonStore);  
-  const { name } = useParams();  
+  const { name } = useParams(); 
+  
+  
   // const album = albums.find(album => album.collectionId === parseInt(collectionId));
 
   if (!pokemonSelected) {
@@ -23,12 +25,22 @@ export const DetailsPokemonPage = () => {
   return (
   
     <Grid
-        className='animate__animated animate__fadeIn'
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ maxWidth: '90%', minHeight: '90vh', backgroundColor: 'primary.main', borderRadius: 3, ml: 'auto', mr: 'auto', mt: '30px'}}
+      className='animate__animated animate__fadeIn'
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{
+        maxWidth: '90%',
+        minHeight: '90vh',
+        borderRadius: 3,
+        ml: 'auto',
+        mr: 'auto',
+        mt: '30px',
+        backgroundImage:
+          'linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url("https://images.alphacoders.com/294/294453.jpg")',
+        backgroundPosition: 'center',
+      }}
     >
       
       <Grid
@@ -41,7 +53,7 @@ export const DetailsPokemonPage = () => {
             sx={{
                 boxShadow: 6,
                 height: 'auto',
-                width: 500,
+                width: 600,
                 maxHeight: { xs: 'auto', md: 'auto' },
                 maxWidth: { xs: 250, md: 350 },
               }}
@@ -49,20 +61,10 @@ export const DetailsPokemonPage = () => {
             src={back_default}
           />
         </Grid>
-        <Grid
-          item
-          sx={{ml: 6}} 
-        >
-          <Typography color="white" variant='h2'sx={{ p: 3 }}>{name}</Typography>
+        <Grid item>
+          <Typography color="white" variant='h2'sx={{pb: 3}}>{name.toUpperCase()}</Typography>
         </Grid>
-        <Grid
-          item
-          sx={{ml: 6}} 
-        >
-          <Tooltip
-            title="back"
-            arrow
-          >
+        <Grid item>
           <IconButton
               onClick={() => navigate(-1)}
               sx={{
@@ -70,9 +72,13 @@ export const DetailsPokemonPage = () => {
                 ':hover': { opacity: 0.5 },
               }}
             >
+            <Tooltip
+              title="back"
+              arrow
+            >
               <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
-            </IconButton>
-          </Tooltip>
+            </Tooltip>
+          </IconButton>
         </Grid>
      </Grid>
   )

@@ -17,15 +17,15 @@ export const pokemonSlice = createSlice({
         startLoadingAllPokemons: (state, action) => {
             state.isLoading = true;
         },
-        startLoadingPokemonByName: (state, action) => {
+        startLoadingPokemonByName: (state, { payload }) => {
             state.isLoading = true;
-            state.verifiedInputValue = action.payload.verifiedInputValue;
-            state.pokemonSelected = action.payload.data;
+            state.verifiedInputValue = payload.verifiedInputValue;
+            state.pokemonSelected = payload.data;
         },
-        setPokemons: (state, action) => {
+        setPokemons: (state, { payload }) => {
             state.isLoading = false;
-            state.page = action.payload.page;
-            state.pokemons = action.payload.pokemons;
+            state.page = payload.newPage;
+            state.pokemons = [...state.pokemons, payload.results];
             state.errorMessage = '';
         },
         setPokemonByName: (state, action) => {

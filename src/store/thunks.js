@@ -5,13 +5,14 @@ export const getAllPokemons = (page = 0) => {
     
     return async (dispatch) => {
         
-        const {data} = await pokemonApi.get(`/pokemon?limit=20&offset=${page * 20}`);
+        const { data } = await pokemonApi.get(`/pokemon?limit=20&offset=${page * 20}`);
 
-        console.log(data);
-  
+        let newPage = page + 1;
+        const results = data.results;
+
         (data.count === 0)
             ? dispatch(noApiResults())
-            : dispatch(setPokemons({ pokemons: data.results, page: page + 1}));
+            : dispatch(setPokemons({ results, newPage }));
            
     }
 }
@@ -21,7 +22,6 @@ export const getPokemonByName = ({ verifiedInputValue }) => {
     return async (dispatch) => {
         
         const { data } = await pokemonApi.get(`/pokemon/${verifiedInputValue}`);
-        console.log(data.id);
 
         (!data.id)
             ? dispatch(noApiResults())

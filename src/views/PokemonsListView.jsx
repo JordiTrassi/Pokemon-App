@@ -5,7 +5,7 @@ import { PokemonCard, IsLoading } from '../components';
 
 export const PokemonsListView = () => {
     
-    const { isLoading, pokemons = [] } = useSelector(state => state.pokemonStore);
+    const { isLoading, pokemons = [], page } = useSelector(state => state.pokemonStore);
 
 
     return (
@@ -15,7 +15,7 @@ export const PokemonsListView = () => {
             {
               (isLoading)
                   ? <IsLoading />
-                  : pokemons.map(pokemon => (
+                  : pokemons[page - 1].map(pokemon => (
                       <PokemonCard                    
                           key={pokemon.name}
                           {...pokemon}

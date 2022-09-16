@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
 
-import { Box, Button, Grid, Tooltip} from '@mui/material';
+import { Box, Button, Tooltip} from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
 
-import { IsLoading, NavBar } from '../components';
+import { IsLoading, NavBar, FooterButtonsListPage } from '../components';
 import { PokemonsListView, PokemonsGridView } from '../views';
-import { changingViewGrid, getAllPokemons } from '../store';
+import { changingViewGrid } from '../store';
+
 
 
 
@@ -18,8 +18,9 @@ import { changingViewGrid, getAllPokemons } from '../store';
 export const PokemonsList = () => {
 
   const dispatch = useDispatch();
-  const { isLoading, page, viewGrid, verifiedInputValue } = useSelector(state => state.pokemonStore);
+  const { isLoading, viewGrid } = useSelector(state => state.pokemonStore);
 
+  
 
   return (
     <>
@@ -55,7 +56,7 @@ export const PokemonsList = () => {
                       variant="contained"
                       disabled={!viewGrid}
                       onClick={() => dispatch(changingViewGrid(false))}
-                      sx={{ p: 2, mr: 3, backgroundColor: 'primary' }}
+                      sx={{ p: 2, mr: 3, backgroundColor: 'primary', borderRadius: 50 }}
                     >
                       <Tooltip
                         title="List View"
@@ -70,7 +71,7 @@ export const PokemonsList = () => {
                       variant="contained"
                       disabled={viewGrid}
                       onClick={() => dispatch(changingViewGrid(true))}
-                      sx={{ p: 2, ml: 3, backgroundColor: 'primary' }}
+                      sx={{ p: 2, ml: 3, backgroundColor: 'primary', borderRadius: 50 }}
                     >
                       <Tooltip
                         title="Grid View"
@@ -89,19 +90,7 @@ export const PokemonsList = () => {
                         : <PokemonsListView />
                     }
                         
-                  <Tooltip
-                    title="more results"
-                    arrow
-                  >
-                    <Button
-                      variant="contained"
-                      disabled={isLoading}
-                      onClick={() => dispatch(getAllPokemons({ page, verifiedInputValue }))}
-                      sx={{ p: 2, mb: '30px' }}
-                    >
-                      Next Page
-                    </Button>           
-                </Tooltip>
+                  <FooterButtonsListPage />
               </>
         } 
 
@@ -109,8 +98,3 @@ export const PokemonsList = () => {
     </>
   )
 }
-
-
-
-
-{/* <h2><Link to={`:pokemonId`}>DETAILS</Link></h2> */}
