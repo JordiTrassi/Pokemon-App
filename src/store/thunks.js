@@ -25,7 +25,7 @@ export const getPokemonByName = ({ verifiedInputValue }) => {
 
         (!data.id)
             ? dispatch(noApiResults())
-            : dispatch(setPokemonByName({ pokemonSelected: data}));
+            : dispatch(setPokemonByName(data));
 
     }
 }

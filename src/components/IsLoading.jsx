@@ -5,11 +5,11 @@ export const IsLoading = () => {
   return (
     <Box
       sx={{
+        height: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        mt: 15,
       }}>
       <Typography sx={{fontSize: 30}}>Is Loading ...</Typography>
       <CircularProgress sx={{mt: 3}} />

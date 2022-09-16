@@ -4,17 +4,14 @@ import { Outlet } from 'react-router-dom';
 import { Box, Button, Grid, Tooltip} from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
-// import Swal from 'sweetalert2';
-// import 'sweetalert2/dist/sweetalert2.css';
+
 import { IsLoading, NavBar } from '../components';
 import { PokemonsListView, PokemonsGridView } from '../views';
-
-
-
 import { changingViewGrid, getAllPokemons } from '../store';
 
 
-
+// import Swal from 'sweetalert2';
+// import 'sweetalert2/dist/sweetalert2.css';
 
 
 export const PokemonsList = () => {
@@ -26,7 +23,7 @@ export const PokemonsList = () => {
   return (
     <>
       <NavBar />
-
+      <Outlet />
       <Box
       container
       display="flex"
@@ -34,12 +31,12 @@ export const PokemonsList = () => {
       alignItems="center"
       sx={{
         p: 2,
-        height: '100vh',
-        // width: '100vw',
+        height: '100%',
+        width: '100vw',
         backgroundImage:
         'linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://images.alphacoders.com/481/481199.jpg")',
-        // backgroundRepeat: 'norepeat repeat',
-        backgroundSize: 'cover',
+        // backgroundRepeat: 'repeat',
+        // backgroundSize: 'cover',
         backgroundPosition: 'center', 
         }}
       >
@@ -109,7 +106,7 @@ export const PokemonsList = () => {
         } 
 
       </Box>
-      <Outlet />
+      
     </>
   )
 }

@@ -20,6 +20,7 @@ export const pokemonSlice = createSlice({
         startLoadingPokemonByName: (state, action) => {
             state.isLoading = true;
             state.verifiedInputValue = action.payload.verifiedInputValue;
+            state.pokemonSelected = action.payload.data;
         },
         setPokemons: (state, action) => {
             state.isLoading = false;
