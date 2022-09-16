@@ -10,6 +10,7 @@ import { PokemonsListView, PokemonsGridView } from '../views';
 import { changingViewGrid, getAllPokemons } from '../store';
 
 
+
 // import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.css';
 
@@ -23,7 +24,6 @@ export const PokemonsList = () => {
   return (
     <>
       <NavBar />
-      <Outlet />
       <Box
       container
       display="flex"
@@ -106,7 +106,6 @@ export const PokemonsList = () => {
         } 
 
       </Box>
-      
     </>
   )
 }

@@ -7,7 +7,7 @@ import { AddCircle } from '@mui/icons-material';
 
 export const PokemonCard = ({name, url}) => {
 
-
+  
   return (
 
     <Card
