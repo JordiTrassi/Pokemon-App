@@ -6,6 +6,7 @@ export const pokemonSlice = createSlice({
     name: 'pokemonStore',
     initialState: {
         pokemons: [],
+        pokemonId: 1,
         page: 0,
         renderPage: 0,
         viewGrid: true,
@@ -25,9 +26,9 @@ export const pokemonSlice = createSlice({
         },
         setPokemons: (state, { payload }) => {
             state.isLoading = false;
-            state.page = payload.newPage;
-            state.renderPage = payload.newPage;
-            state.pokemons = [...state.pokemons, payload.results];
+            // state.page = payload.newPage;
+            // state.renderPage = payload.newPage;
+            state.pokemons = [...state.pokemons, payload ];
             state.errorMessage = '';
         },
         setPokemonByName: (state, action) => {

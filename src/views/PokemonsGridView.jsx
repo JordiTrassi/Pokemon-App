@@ -7,7 +7,7 @@ export const PokemonsGridView = () => {
 
     const { isLoading, pokemons = [], renderPage } = useSelector(state => state.pokemonStore);
 
-    console.log(renderPage);
+    // console.log(renderPage);
     return (
         <Grid
             container
@@ -21,7 +21,7 @@ export const PokemonsGridView = () => {
             {
                 (isLoading)
                     ? <Grid item sx={{ ml: '42%' }}><IsLoading /></Grid>
-                    : pokemons[renderPage - 1].map(pokemon => (
+                    : pokemons.map(pokemon => (
                         <Grid
                             item
                             key={pokemon.name}

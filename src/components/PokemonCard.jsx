@@ -5,7 +5,7 @@ import { AddCircle } from '@mui/icons-material';
 
 
 
-export const PokemonCard = ({name, url}) => {
+export const PokemonCard = ({name, sprites}) => {
 
   
   return (
@@ -46,7 +46,7 @@ export const PokemonCard = ({name, url}) => {
       </Box>
       <CardMedia
         component="img"
-        image={url}
+        image={sprites.front_default}
         alt={name}
         sx={{ height: 200, width: 'auto' }}     
       />

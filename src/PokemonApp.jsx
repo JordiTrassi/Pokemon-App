@@ -1,15 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Grid, Button, Typography, Tooltip } from '@mui/material';
 import { getAllPokemons, startLoadingAllPokemons } from './store';
 
+
 export const PokemonApp = () => {
 
   const dispatch = useDispatch();
+  const { pokemonId, page } = useSelector(state => state.pokemonStore);
 
   const getStartAllPokemons = () => {
     dispatch(startLoadingAllPokemons());
-    dispatch(getAllPokemons());
+    dispatch(getAllPokemons(pokemonId, page));
   };
   
   return (
