@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
 import { AddCircle } from '@mui/icons-material';
 import { setSelectedPokemon } from '../store/slices/pokemonSlice';
@@ -12,9 +12,9 @@ export const PokemonCard = (pokemon) => {
   const { name, sprites } = pokemon;
   
   const dispatch = useDispatch();
+  const { viewGrid } = useSelector(state => state.pokemonStore);
 
   const onSelectedPokemon = () => {
-
     dispatch(setSelectedPokemon(pokemon));
   }
     
@@ -57,12 +57,51 @@ export const PokemonCard = (pokemon) => {
                
         </Box>
       </Box>
-      <CardMedia
-        component="img"
-        image={sprites.front_default}
-        alt={name}
-        sx={{ height: 200, width: 'auto'}}     
-      />
+      
+      {
+        (!viewGrid)
+          ? <Box
+            container
+            width='90%'
+            display='flex'
+            flexDirection='row'
+            justifyContent='space-around'
+            flexWrap='wrap'
+            sx={{ml: 2}}
+          >
+            <CardMedia
+              component="img"
+              image={sprites.front_default}
+              alt={name}
+              sx={{ height: 200, width: 'auto'}}     
+            />
+            <CardMedia
+              component="img"
+              image={sprites.back_default}
+              alt={name+"_back_default"}
+              sx={{ height: 200, width: 'auto'}}     
+            />
+            <CardMedia
+              component="img"
+              image={sprites.front_shiny}
+              alt={name+"_front_shiny"}
+              sx={{ height: 200, width: 'auto'}}     
+            />
+            <CardMedia
+              component="img"
+              image={sprites.back_shiny}
+              alt={name+"_back_shiny"}
+              sx={{ height: 200, width: 'auto'}}     
+            />
+          </Box>
+          : <CardMedia
+              component="img"
+              image={sprites.front_default}
+              alt={name}
+              sx={{ height: 200, width: 'auto'}}     
+            />
+          
+      }
     </Card>
   )
 }

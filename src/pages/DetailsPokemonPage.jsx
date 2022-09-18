@@ -17,7 +17,7 @@ export const DetailsPokemonPage = () => {
     return <Navigate to="/home" />
   }
 
-  const { back_default, front_default  } = pokemonSelected.sprites;
+  const { front_default  } = pokemonSelected.sprites;
 
 
   return (
