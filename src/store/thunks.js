@@ -36,12 +36,18 @@ export const getAllPokemons = (pokemonId, page = 0) => {
 export const getPokemonByName = ({ verifiedInputValue }) => {
 
     return async (dispatch) => {
-        
-        const { data } = await pokemonApi.get(`/pokemon/${verifiedInputValue}`);
+        try {
+            const { data } = await pokemonApi.get(`/pokemon/${verifiedInputValue}`);
+            const { name, sprites, id } = data;
 
-        (!data.id)
-            ? dispatch(noApiResults())
-            : dispatch(setPokemonByName(data));
+            dispatch(setPokemonByName({name, sprites}));
+        }
+        catch (error) {
+            console.log(error);
+            dispatch(noApiResults(error));
+        }
+
+        
 
     }
 }

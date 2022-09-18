@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { AppBar, Box, Toolbar, Typography, InputBase, Link, Tooltip, FormControl } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
@@ -7,9 +7,6 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import { verifyInputValue } from '../helpers/verifyInputValue';
 import { getPokemonByName, startLoadingPokemonByName } from '../store';
-
-// import Swal from 'sweetalert2';
-// import 'sweetalert2/dist/sweetalert2.css';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,8 +55,7 @@ export const NavBar = () => {
 
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
-  const { errorMessage } = useSelector(state => state.pokemonStore);
-
+  
   const onInputChange = ({target}) => {
     setInputValue(target.value);
   }
@@ -84,19 +80,9 @@ export const NavBar = () => {
     };
   }, [inputValue]);
 
-  // useEffect(() => {
-  //     if (errorMessage.length > 0) {
-  //         Swal.fire({
-  //             icon: 'error',
-  //             title: 'Oops...',
-  //             text: errorMessage,
-  //             })
-  //     }
-  // }, [errorMessage])
-
   return (
-
-    <Box sx={{ flexGrow: 1 }}>
+    
+    <Box sx={{ flexGrow: 1 }}>    
       <AppBar
         position="static"
         sx={{backgroundColor: 'primary'}}

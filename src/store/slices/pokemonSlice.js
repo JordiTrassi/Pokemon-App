@@ -28,7 +28,6 @@ export const pokemonSlice = createSlice({
         setPokemons: (state, { payload }) => {
             state.pokemonId = payload.pokemonId;
             state.pokemons = [...state.pokemons, payload ];
-            state.errorMessage = '';
             state.renderPage = payload.newPage;
             state.page = payload.newPage;
         },
@@ -36,13 +35,12 @@ export const pokemonSlice = createSlice({
             state.isLoading = false;
             console.log(action.payload);
             state.pokemonSelected = action.payload;
-            state.errorMessage = '';
         },
         changingViewGrid: (state, action) => {
             state.viewGrid = action.payload;
         },
-        noApiResults: (state, action) => {
-            state.errorMessage = 'No hay resultados disponibles!';
+        noApiResults: (state, { payload }) => {
+            state.errorMessage = payload.message;
         },
         previousPage: (state, { payload }) => {
             state.renderPage = payload;
@@ -56,9 +54,12 @@ export const pokemonSlice = createSlice({
             state.isLoading = false;
         },
         setSelectedPokemon: (state, { payload }) => {
-            console.log(payload);
             state.pokemonSelected = payload;
         },
+        resetNoApiResults: (state) => {
+            state.errorMessage = '';
+            state.isLoading = false;
+        }
 
     },
 })
@@ -75,4 +76,5 @@ export const {
     nextPage,
     addInTotalPokemons,
     setSelectedPokemon,
+    resetNoApiResults,
 } = pokemonSlice.actions;

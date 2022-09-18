@@ -7,6 +7,7 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import { IsLoading, NavBar, FooterButtonsListPage } from '../components';
 import { PokemonsListView, PokemonsGridView } from '../views';
 import { changingViewGrid } from '../store';
+import { ErrorModal } from '../components/ErrorModal';
 
 
 
@@ -25,6 +26,7 @@ export const PokemonsList = () => {
   return (
     <>
       <NavBar />
+      <ErrorModal />
       <Box
       container
       display="flex"
