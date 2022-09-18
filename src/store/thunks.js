@@ -1,5 +1,5 @@
 import { pokemonApi } from '../api/pokemonApi';
-import { setPokemons, setPokemonByName, noApiResults, addInTotalPokemons } from './slices/pokemonSlice';
+import { setPokemons, setPokemonPages, setPokemonByName, noApiResults, addInTotalPokemons } from './slices/pokemonSlice';
 
 export const getAllPokemons = (pokemonId, page = 0) => {
    
@@ -18,7 +18,8 @@ export const getAllPokemons = (pokemonId, page = 0) => {
                     newPage = page + 1;
                 }
 
-                dispatch(setPokemons({ name, sprites, pokemonId, newPage, page }));
+                dispatch(setPokemons({ name, sprites, pokemonId }));
+                dispatch(setPokemonPages({ newPage, page }));
                 pokemonId = pokemonId + 1;
 
             }
@@ -40,14 +41,12 @@ export const getPokemonByName = ({ verifiedInputValue }) => {
             const { data } = await pokemonApi.get(`/pokemon/${verifiedInputValue}`);
             const { name, sprites, id } = data;
 
-            dispatch(setPokemonByName({name, sprites}));
+            dispatch(setPokemonByName({name, sprites, id}));
         }
         catch (error) {
             console.log(error);
             dispatch(noApiResults(error));
         }
-
-        
 
     }
 }

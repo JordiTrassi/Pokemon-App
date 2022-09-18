@@ -23,24 +23,25 @@ export const pokemonSlice = createSlice({
         startLoadingPokemonByName: (state, { payload }) => {
             state.isLoading = true;
             state.verifiedInputValue = payload.verifiedInputValue;
-            state.pokemonSelected = payload.data;
         },
         setPokemons: (state, { payload }) => {
             state.pokemonId = payload.pokemonId;
             state.pokemons = [...state.pokemons, payload ];
+        },
+        setPokemonPages: (state, { payload }) => {
             state.renderPage = payload.newPage;
             state.page = payload.newPage;
         },
         setPokemonByName: (state, action) => {
-            state.isLoading = false;
-            console.log(action.payload);
             state.pokemonSelected = action.payload;
+            state.isLoading = false;
         },
         changingViewGrid: (state, action) => {
             state.viewGrid = action.payload;
         },
         noApiResults: (state, { payload }) => {
             state.errorMessage = payload.message;
+            state.verifiedInputValue = '';
         },
         previousPage: (state, { payload }) => {
             state.renderPage = payload;
@@ -59,8 +60,10 @@ export const pokemonSlice = createSlice({
         resetNoApiResults: (state) => {
             state.errorMessage = '';
             state.isLoading = false;
-        }
-
+        },
+        resetPokemonSelected: (state) => {
+            state.verifiedInputValue = '';
+        },
     },
 })
 
@@ -69,6 +72,7 @@ export const {
     startLoadingAllPokemons,
     startLoadingPokemonByName,
     setPokemons,
+    setPokemonPages,
     setPokemonByName,
     changingViewGrid,
     noApiResults,
@@ -77,4 +81,5 @@ export const {
     addInTotalPokemons,
     setSelectedPokemon,
     resetNoApiResults,
+    resetPokemonSelected,
 } = pokemonSlice.actions;

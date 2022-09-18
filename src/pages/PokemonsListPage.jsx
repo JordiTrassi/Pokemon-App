@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import { Box, Button, Tooltip} from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -8,19 +10,15 @@ import { IsLoading, NavBar, FooterButtonsListPage } from '../components';
 import { PokemonsListView, PokemonsGridView } from '../views';
 import { changingViewGrid } from '../store';
 import { ErrorModal } from '../components/ErrorModal';
+import { DetailsPokemonPage } from './DetailsPokemonPage';
 
-
-
-
-// import Swal from 'sweetalert2';
-// import 'sweetalert2/dist/sweetalert2.css';
 
 
 export const PokemonsList = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading, viewGrid } = useSelector(state => state.pokemonStore);
-
   
 
   return (
@@ -38,8 +36,6 @@ export const PokemonsList = () => {
         width: '100vw',
         backgroundImage:
         'linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://images.alphacoders.com/481/481199.jpg")',
-        // backgroundRepeat: 'repeat',
-        // backgroundSize: 'cover',
         backgroundPosition: 'center', 
         }}
       >
@@ -98,5 +94,6 @@ export const PokemonsList = () => {
 
       </Box>
     </>
+     
   )
 }

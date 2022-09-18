@@ -6,7 +6,7 @@ import { PokemonCard, IsLoading } from '../components';
 export const PokemonsGridView = () => {
 
     const { isLoading, totalPokemons = [], renderPage } = useSelector(state => state.pokemonStore);
-
+   
     return (
         <Grid
             container

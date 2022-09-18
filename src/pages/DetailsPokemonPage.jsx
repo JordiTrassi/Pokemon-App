@@ -1,24 +1,16 @@
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 
-
-
 export const DetailsPokemonPage = () => {
-
+  
   const navigate = useNavigate();
   const { pokemonSelected } = useSelector(state => state.pokemonStore);  
-  const { name } = useParams(); 
   
-
-  if (!pokemonSelected) {
-    return <Navigate to="/home" />
-  }
-
-  const { front_default  } = pokemonSelected.sprites;
-
+  const { name } = useParams(); 
+  const { sprites } = pokemonSelected;
 
   return (
     
@@ -60,7 +52,7 @@ export const DetailsPokemonPage = () => {
               maxWidth: { xs: 250, md: 350 },
             }}
             alt={name}
-            src={front_default}
+            src={sprites.front_default}
             />
         </Grid>
         <Grid item>
@@ -68,7 +60,7 @@ export const DetailsPokemonPage = () => {
         </Grid>
         <Grid item>
           <IconButton
-            onClick={() => navigate(-1)}
+            onClick={() =>  navigate(-1)}
             sx={{
               color: 'white',
               ':hover': { opacity: 0.5 },

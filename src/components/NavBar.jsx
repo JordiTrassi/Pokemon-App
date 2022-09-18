@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { AppBar, Box, Toolbar, Typography, InputBase, Link, Tooltip, FormControl } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { verifyInputValue } from '../helpers/verifyInputValue';
-import { getPokemonByName, startLoadingPokemonByName } from '../store';
+import { getPokemonByName, resetPokemonSelected, startLoadingPokemonByName } from '../store';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -54,18 +55,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export const NavBar = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
+
+  const {verifiedInputValue, pokemonSelected} = useSelector(state => state.pokemonStore)
   
   const onInputChange = ({target}) => {
     setInputValue(target.value);
   }
 
   const onSubmit = async () => {
-    const verifiedInputValue = await verifyInputValue(inputValue);
-
-    dispatch(startLoadingPokemonByName({ verifiedInputValue }));
-    dispatch(getPokemonByName({ verifiedInputValue }));
-  }
+    if (inputValue !== '') {
+      const verifiedInputValue = await verifyInputValue(inputValue);
+  
+      dispatch(startLoadingPokemonByName({ verifiedInputValue }));
+      dispatch(getPokemonByName({ verifiedInputValue }));
+    };
+  };
 
   useEffect(() => {
     const listener = event => {
@@ -79,6 +85,17 @@ export const NavBar = () => {
       document.removeEventListener("keydown", listener);
     };
   }, [inputValue]);
+
+
+  useEffect(() => {
+    if (verifiedInputValue.length !== 0) {
+
+      navigate(verifiedInputValue);
+      dispatch(resetPokemonSelected());
+      
+    };
+      
+  }, [pokemonSelected]);
 
   return (
     
