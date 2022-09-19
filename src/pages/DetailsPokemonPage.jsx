@@ -38,7 +38,6 @@ export const DetailsPokemonPage = () => {
         >
       
       <Grid
-        item
         className='animate__animated animate__fadeInLeft'
         sx={{mb: 8}}
         >
@@ -55,10 +54,10 @@ export const DetailsPokemonPage = () => {
             src={sprites.front_default}
             />
         </Grid>
-        <Grid item>
+        <Grid>
           <Typography color="white" variant='h2'sx={{pb: 3}}>{name.toUpperCase()}</Typography>
         </Grid>
-        <Grid item>
+        <Grid>
           <IconButton
             onClick={() =>  navigate(-1)}
             sx={{

@@ -13,7 +13,7 @@ export const PokemonsGridView = () => {
             spacing={3}
             sx={{
                 width: '100%',
-                p: 1
+                p: 1,
             }}
         >
             {
@@ -29,7 +29,7 @@ export const PokemonsGridView = () => {
                                 {...pokemon}
                             />
                         </Grid>
-                    ))
+                        ))
                       
             }
         

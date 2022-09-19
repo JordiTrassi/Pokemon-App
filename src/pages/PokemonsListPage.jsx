@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 import { Box, Button, Tooltip} from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -10,13 +8,10 @@ import { IsLoading, NavBar, FooterButtonsListPage } from '../components';
 import { PokemonsListView, PokemonsGridView } from '../views';
 import { changingViewGrid } from '../store';
 import { ErrorModal } from '../components/ErrorModal';
-import { DetailsPokemonPage } from './DetailsPokemonPage';
-
 
 
 export const PokemonsList = () => {
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading, viewGrid } = useSelector(state => state.pokemonStore);
   
