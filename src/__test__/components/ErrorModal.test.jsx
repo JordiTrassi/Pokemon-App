@@ -5,8 +5,6 @@ import { store } from '../../store';
 
 describe('Test the <ErrorModal /> component', () => {
   
-    // const open = true;
-    // const errorMessage = "There are't results";
 
     test('Should match with the snapshot ', () => {
         
@@ -15,7 +13,6 @@ describe('Test the <ErrorModal /> component', () => {
                 <ErrorModal />
             </Provider>
         );
-        screen.debug()
 
         expect(container).toMatchSnapshot();
 
