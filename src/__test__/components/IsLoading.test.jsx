@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { IsLoading } from '../../components/IsLoading';
 
 
@@ -13,6 +13,16 @@ describe('Test the <IsLoading /> component', () => {
 
         expect(container).toMatchSnapshot();
       
+    });
+
+    test('Should contain "Is Loading ..." text', () => {
+        
+        render(
+            <IsLoading />
+        );
+        screen.debug();
+
+        expect(screen.getByText("Is Loading ...")).toBeTruthy();
     });
   
 });
