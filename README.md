@@ -7,14 +7,13 @@
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40" />
 </p>
 
-I used Material UI and SweetAlert2 and Testing with Jest.
+I used Material UI and Testing with Jest.
 <p>
 <img src="https://v4.material-ui.com/static/logo.png" alt="materialui" width="40" height="40" />
-<img src="https://raw.githubusercontent.com/sweetalert2/sweetalert2/HEAD/assets/swal2-logo.png" alt="sweetalert2" height="40" />
 <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40" />
 </p> 
 
-<!-- <a href=""><h3 align="center">Visit my App at Netlify!</h3></a> -->
+<a href="http://trassi-pokemon-app.netlify.app"><h3 align="center">Visit my App at Netlify!</h3></a>
 
 
 In order to execute the app you must install the dependencies:
