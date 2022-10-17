@@ -13,7 +13,8 @@ I used Material UI and Testing with Jest.
 <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40" />
 </p> 
 
-<a href="http://trassi-pokemon-app.netlify.app"><h3 align="center">Visit my App at Netlify!</h3></a>
+
+[Visit my App at Netlify!](http://trassi-pokemon-app.netlify.app)
 
 
 In order to execute the app you must install the dependencies:
